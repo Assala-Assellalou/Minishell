@@ -5,18 +5,6 @@ This repository contains an educational implementation of a shell with basic par
 
 > Note: This README is intended to be an overview and a practical guide to build, run and test the project. For the official project specification see `projet-minishell.pdf`.
 
-## Table of contents
-- [Features](#features)
-- [Requirements](#requirements)
-- [Build](#build)
-- [Usage](#usage)
-- [Supported builtins](#supported-builtins)
-- [Shell behavior and supported syntax](#shell-behavior-and-supported-syntax)
-- [Implementation notes](#implementation-notes)
-- [Testing and debugging tips](#testing-and-debugging-tips)
-- [Known limitations](#known-limitations)
-- [Contributing](#contributing)
-- [License & Credits](#license--credits)
 
 ## Features
 - Read-eval loop with a prompt
@@ -30,28 +18,6 @@ This repository contains an educational implementation of a shell with basic par
 - Basic builtin commands (see list below)
 - Proper handling of child processes and exit statuses
 - Signal handling for interactive use (Ctrl-C, Ctrl-\, etc.)
-
-## Requirements
-- Unix-like OS (Linux, macOS)
-- POSIX-compatible shell utilities for testing
-- C compiler (e.g., `gcc`)
-- Make (optional, if Makefile provided)
-- Recommended: valgrind to check for memory leaks while debugging
-
-## Build
-Typical build steps — adjust to your project's Makefile or build system.
-
-1. Clone the repository:
-   git clone https://github.com/Assala-Assellalou/Minishell.git
-2. Enter the project directory:
-   cd Minishell
-3. Build (if a Makefile exists):
-   make
-
-If no Makefile is provided, compile manually:
-   gcc -Wall -Wextra -Werror -g -o minishell src/*.c
-
-Replace `src/*.c` with the actual source file locations used in this repo.
 
 ## Usage
 Run the shell executable:
@@ -70,10 +36,6 @@ Example session:
    line1
    line2
    minishell$ exit
-
-Notes:
-- Commands typed are executed by searching `PATH`.
-- Builtins are executed inside the shell process when required (so they can modify the shell state).
 
 ## Supported builtins
 This project typically implements the following builtins (confirm against your source):
@@ -107,43 +69,4 @@ Behavior should follow the project specification (edge cases, return values).
 - Signals: shell ignores or handles interactive signals (e.g., Ctrl-C) appropriately; child processes may restore default handling.
 - Memory: ensure allocated memory is freed on exit; recommended to validate with `valgrind`.
 
-## Testing and debugging tips
-- Test basic command execution: `ls`, `echo`, `sleep`
-- Test quoting and expansions:
-  - echo "This is $HOME"
-  - echo 'This is $HOME'
-- Test redirections:
-  - echo hi > /tmp/testfile
-  - cat < /tmp/testfile
-- Test pipelines:
-  - ps aux | grep minishell | wc -l
-- Test here-document:
-  cat << EOF
-  one
-  two
-  EOF
-- Use Valgrind to find leaks:
-  valgrind --leak-check=full ./minishell
-- Use `strace` (Linux) or `dtruss`/`ktrace` for system call tracing if needed.
 
-## Known limitations
-- Not all advanced shell features are implemented (job control, background `&`, complex expansions, advanced globbing).
-- Behavior may differ from `/bin/bash` on edge cases; refer to the PDF spec for required behavior.
-
-## Contributing
-This repository is intended as a student learning project. If you intend to contribute:
-- Fork the repo
-- Create feature branches for large additions
-- Ensure no leak is introduced, and maintain tidy code and comments
-- Add tests for behavior you add or change
-
-If you are the project owner (Assala-Assellalou), ensure the README reflects any repository-specific build scripts, directories (src, includes, tests), and exact usage.
-
-## License & Credits
-- This is an educational project — please check your institution's policies and license choice.
-- Credits: project based on the Minishell assignment specification (see `projet-minishell.pdf` in the repository).
-
-If you want, I can:
-- Tailor this README to the exact directory layout and Makefile of this repo (I can read the repo and generate a README with precise build commands).
-- Add badges (build status, valgrind) once CI or scripts exist.
-- Translate or adapt the README to French to match the project PDF language.
