@@ -5,7 +5,6 @@ This repository contains an educational implementation of a shell with basic par
 
 > Note: This README is intended to be an overview and a practical guide to build, run and test the project. For the official project specification see `projet-minishell.pdf`.
 
-
 ## Features
 - Read-eval loop with a prompt
 - Tokenization / lexical analysis of command lines
